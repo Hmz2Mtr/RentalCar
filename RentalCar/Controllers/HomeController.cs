@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Humanizer;
+using Microsoft.AspNetCore.Mvc;
 using RentalCar.Models;
 using System.Diagnostics;
 
@@ -26,7 +27,32 @@ namespace RentalCar.Controllers
         {
             return View();
         }
-
+        public IActionResult Notfound()
+        {
+            return View();
+        }
+        public IActionResult Blog()
+        {
+            return View();
+        }
+        public IActionResult Services()
+        {
+            return View();
+        }
+        public IActionResult Features()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Team()
+        {
+            return View();
+        }
+        
+        
         public IActionResult Privacy()
         {
             return View();
