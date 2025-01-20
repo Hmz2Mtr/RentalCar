@@ -88,17 +88,21 @@
                                 <a asp-controller="Home" asp-action="Notfound" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a asp-controller="Car" asp-action="Index" class="dropdown-item">My Cars</a>
-                                <a asp-controller="Clients" asp-action="Index" class="dropdown-item">My Clients</a>
-                                <a href="#" class="dropdown-item">My Customers</a>
+
+                        @if (User.IsInRole("admin"))
+                        {
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Pages</a>
+                                <div class="dropdown-menu m-0">
+                                    <a asp-controller="Car" asp-action="Index" class="dropdown-item">My Cars</a>
+                                    <a asp-controller="Clients" asp-action="Index" class="dropdown-item">My Clients</a>
+                                </div>
                             </div>
-                        </div>
+                        }
+
                         <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Get Started</a>
+                    <a asp-controller="UserAuthentication" asp-action="Login" class="btn btn-primary rounded-pill py-2 px-4">Get Started</a>
                 </div>
             </nav>
         </div>
