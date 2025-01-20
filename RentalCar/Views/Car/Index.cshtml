@@ -1,0 +1,81 @@
+﻿@using RentalCar.Models
+@model List<Car>
+
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">- My Cars -</h4>
+    </div>
+</div>
+<!-- Header End -->
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Liste of my cars
+            </h2>
+        </div>
+        <div class="col-6" text-end>
+            <a asp-controller="Car" asp-action="Creation" class=" btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Créer une nouvelle Car
+            </a>
+
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    CarID
+                </th>
+                <th>
+                    Marque
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Color
+                </th>
+                <th>
+                    ImageURL
+                </th>
+                <th>
+                    Price
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.CarID</td>
+                    <td>@obj.Marque</td>
+                    <td>@obj.Model</td>
+                    <td>@obj.Color</td>
+                    <td>
+                        <img src=@obj.ImageURL style="width: 100px; height: auto;" />
+                        </td>
+                    <td>@obj.Price</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Car" asp-action="Modifier" asp-route-id="@obj.CarID" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i> Modifier
+                            </a>
+                            <a asp-controller="Car" asp-action="Supprimer" asp-route-id="@obj.CarID" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash"></i> Supprimer
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+</div>

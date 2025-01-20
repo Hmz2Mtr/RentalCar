@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using RentalCar.Data;
 using RentalCar.Models.Domain;
 using RentalCar.Repositories.Abstract;
 using RentalCar.Repositories.Implementation;

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RentalCar.Models.Domain;
+using RentalCar.Data;
 using RentalCar.Repositories.Abstract;
 using System.Linq.Expressions;
 

@@ -1,0 +1,67 @@
+﻿@model UserWithRolesViewModel
+
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">- Delete a Client -</h4>
+    </div>
+</div>
+<!-- Header End -->
+
+<br>
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="border p-4 mt-4 shadow-sm rounded">
+                    <!-- Added shadow and rounded corners -->
+                    <div class="text-center mb-4">
+                        <h2 class="text-primary">Delete a car</h2>
+                        <hr class="w-50 mx-auto" /> <!-- Centered and reduced width of the hr -->
+                    </div>
+
+                    <!-- Marque Field -->
+                    <div class="mb-3">
+                        <label asp-for="Id" class="form-label"></label>
+                        <input asp-for="Id" disabled class="form-control" />
+                    </div>
+
+                    <!-- Marque Field -->
+                    <div class="mb-3">
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" disabled class="form-control" />
+                    </div>
+
+                    <!-- Model Field -->
+                    <div class="mb-3">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" disabled class="form-control" />
+                    </div>
+
+                    <!-- Color Field -->
+                    <div class="mb-3">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" disabled class="form-control" />
+                    </div>
+
+                    <!-- ImageURL Field -->
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" disabled class="form-control" />
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-danger me-md-2">Delete</button>
+                        <a asp-controller="Clients" asp-action="Index" class="btn btn-outline-secondary">Retour à la liste</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<br>

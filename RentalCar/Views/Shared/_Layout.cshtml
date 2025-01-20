@@ -65,7 +65,7 @@
     <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a href="" class="navbar-brand p-0">
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand p-0">
                     <h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>
                     <!-- <img src="~/img/logo.png" alt="Logo"> -->
                 </a>
@@ -74,21 +74,29 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="Index" class="nav-item nav-link active">Home</a>
-                        <a href="About" class="nav-item nav-link">About</a>
-                        <a href="Services" class="nav-item nav-link">Services</a>
-                        <a href="Blog" class="nav-item nav-link">Blog</a>
+                        <a asp-controller="Home" asp-action="Index" class="nav-item nav-link active">Home</a>
+                        <a asp-controller="Home" asp-action="About" class="nav-item nav-link">About</a>
+                        <a asp-controller="Home" asp-action="Services" class="nav-item nav-link">Services</a>
+                        <a asp-controller="Home" asp-action="Blog" class="nav-item nav-link">Blog</a>
 
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="Features" class="dropdown-item">Our Features</a>
-                                <a href="Cars" class="dropdown-item">Our Cars</a>
-                                <a href="Team" class="dropdown-item">Our Team</a>
-                                <a href="Notfound" class="dropdown-item">404 Page</a>
+                                <a asp-controller="Home" asp-action="Features" class="dropdown-item">Our Features</a>
+                                <a asp-controller="Home" asp-action="Cars" class="dropdown-item">Our Cars</a>
+                                <a asp-controller="Home" asp-action="Team" class="dropdown-item">Our Team</a>
+                                <a asp-controller="Home" asp-action="Notfound" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
-                        <a href="Contact" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Pages</a>
+                            <div class="dropdown-menu m-0">
+                                <a asp-controller="Car" asp-action="Index" class="dropdown-item">My Cars</a>
+                                <a asp-controller="Clients" asp-action="Index" class="dropdown-item">My Clients</a>
+                                <a href="#" class="dropdown-item">My Customers</a>
+                            </div>
+                        </div>
+                        <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Get Started</a>
                 </div>
@@ -125,12 +133,12 @@
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="text-white mb-4">Quick Links</h4>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> About</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Cars</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Car Types</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Team</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                        <a asp-controller="Home" asp-action="About"><i class="fas fa-angle-right me-2"></i> About</a>
+                        <a asp-controller="Home" asp-action="Cars"><i class="fas fa-angle-right me-2"></i> Cars</a>
+                        <a asp-controller="Home" asp-action="Features"><i class="fas fa-angle-right me-2"></i> Features</a>
+                        <a asp-controller="Home" asp-action="Team"><i class="fas fa-angle-right me-2"></i> Team</a>
+                        <a asp-controller="Home" asp-action="Services"><i class="fas fa-angle-right me-2"></i>Services</a>
+                        <a asp-controller="Home" asp-action="Contact"><i class="fas fa-angle-right me-2"></i>Contact</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
