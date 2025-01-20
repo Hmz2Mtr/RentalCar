@@ -78,6 +78,8 @@ namespace RentalCar.Controllers
             return Ok(result);
         }
 
+
+
         [Authorize]
         public IActionResult ChangePassword()
         {
