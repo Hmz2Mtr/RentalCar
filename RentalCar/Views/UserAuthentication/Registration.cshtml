@@ -3,65 +3,163 @@
     Layout = null;
 }
 
-<link href="/css/bootstrap.min.css" rel="stylesheet" />
-@Html.ValidationSummary()
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 center-block">
-            <h3>Registration</h3>
-            <form asp-action="Registration" method="post">
-                <div class="form-group">
-                    <label>FName*</label>
-                    <input type="text" class="form-control" asp-for="FirstName"/>
-                    <span class="text-danger"  asp-validation-for="FirstName"></span>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - RentalCar</title>
+    <!-- Add Bootstrap CSS for better styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: rgba(255, 231, 224, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-                <div class="form-group">
-                    <label>LName*</label>
-                    <input type="text" class="form-control" asp-for="LastName" />
-                    <span class="text-danger" asp-validation-for="LastName"></span>
-                </div>
+        .registration-container {
+            background: rgba(249, 242, 241, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
 
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" asp-for="Email" />
-                    <span class="text-danger" asp-validation-for="Email"></span>
+            .registration-container h3 {
+                text-align: center;
+                margin-bottom: 1.5rem;
+                color: #333;
+            }
 
-                </div>
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 1rem;
+        }
 
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" asp-for="Username" />
-                    <span class="text-danger" asp-validation-for="Username"></span>
+        
 
-                </div>
+        .btn-info {
+            background-color: #e45831;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            color: white;
+        }
 
-                <div class="form-group">
-                    <label>Password (eg. John@123)</label>
-                    <input type="password" class="form-control" asp-for="Password" />
-                    <span class="text-danger" asp-validation-for="Password"></span>
+            .btn-info:hover {
+                background-color: #f77336;
+            }
 
-                </div>
+        .btn-primary {
+            background-color: #f77336;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            color: white;
+            margin-top: 10px;
+        }
 
-                <div class="form-group">
-                    <label>Password confirm</label>
-                    <input type="password" class="form-control" asp-for="PasswordConfirm" />
-                    <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+            .btn-primary:hover {
+                background-color: #f77336;
+            }
 
-                </div>
+        .text-danger {
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
 
-               
-                
-                @if (TempData["msg"] != null)
-                {
-                    <div class="form-group">
-                       <span class="text-info">@TempData["msg"]</span>
-                    </div>
-                }
+        .text-info {
+            font-size: 14px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
 
-                <button type="submit" class="btn btn-info">Registration</button>
-                <a class="btn btn-primary" href="/UserAuthentication/Login">Login</a>
-            </form>
-        </div>
+        .login-link {
+            text-align: center;
+            margin-top: 1rem;
+            display: block;
+            color: #f77336;
+            text-decoration: none;
+        }
+
+            .login-link:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h3>Registration</h3>
+        <form asp-action="Registration" method="post">
+            <!-- First Name Field -->
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label"><b>First Name*</b></label>
+                <input type="text" class="form-control" asp-for="FirstName" placeholder="Enter First Name">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <!-- Last Name Field -->
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label"><b>Last Name*</b></label>
+                <input type="text" class="form-control" asp-for="LastName" placeholder="Enter Last Name">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"><b>Email</b></label>
+                <input type="text" class="form-control" asp-for="Email" placeholder="Enter Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Username Field -->
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label"><b>Username</b></label>
+                <input type="text" class="form-control" asp-for="Username" placeholder="Enter Username">
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"><b>Password (eg. John@123)</b></label>
+                <input type="password" class="form-control" asp-for="Password" placeholder="Enter Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- Password Confirm Field -->
+            <div class="mb-3">
+                <label asp-for="PasswordConfirm" class="form-label"><b>Password Confirm</b></label>
+                <input type="password" class="form-control" asp-for="PasswordConfirm" placeholder="Confirm Password">
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+
+            <!-- Display TempData message if any -->
+            @if (TempData["msg"] != null)
+            {
+                <div class="text-info">@TempData["msg"]</div>
+            }
+
+            <!-- Registration Button -->
+            <button type="submit" class="btn btn-info">Register</button>
+
+            <!-- Login Link -->
+            <a class="login-link" href="/UserAuthentication/Login">Already have an account? Login here</a>
+        </form>
     </div>
-</div>
+
+    <!-- Add Bootstrap JS for better interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
