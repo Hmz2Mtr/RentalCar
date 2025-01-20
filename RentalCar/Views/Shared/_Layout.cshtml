@@ -61,6 +61,29 @@
         </div>
     </div>
     <!-- Topbar End -->
+
+
+
+    <style>
+        .profile-icon {
+            width: 50px; /* Adjust the size as needed */
+            height: 50px; /* Adjust the size as needed */
+            border-radius: 50%; /* Make it circular */
+            border: 1px solid #fff; /* Optional: Add a border */
+            object-fit: cover; /* Ensure the image fits within the circle */
+        }
+
+        .navbar-brand {
+            padding: 0 !important; /* Remove default padding */
+        }
+
+        .profile-icon:hover {
+            opacity: 0.8; /* Slightly fade the icon on hover */
+            border-color: #ff3434; /* Change border color on hover */
+        }
+    </style>
+
+    
     <!-- Navbar & Hero Start -->
     <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
         <div class="container">
@@ -86,6 +109,7 @@
                                 <a asp-controller="Home" asp-action="Features" class="dropdown-item">Our Features</a>
                                 <a asp-controller="Home" asp-action="Blog" class="dropdown-item">Blog</a>
                                 <a asp-controller="Home" asp-action="Team" class="dropdown-item">Our Team</a>
+                                <a asp-controller="Home" asp-action="Contact" class="dropdown-item">Contact</a>
                                 <a asp-controller="Home" asp-action="Notfound" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
@@ -100,10 +124,11 @@
                                 </div>
                             </div>
                         }
-
-                        <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a asp-controller="UserAuthentication" asp-action="Login" class="btn btn-primary rounded-pill py-2 px-4">Get Started</a>
+                    <a asp-controller="UserAuthentication" asp-action="Login" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 5px;">Get Started</a>
+                    <a asp-controller="Profile" asp-action="Index" class="navbar-brand p-0">
+                        <img src="~/img/DefaultProfile.png" alt="Logo Profile Image" class="profile-icon">
+                    </a>
                 </div>
             </nav>
         </div>
