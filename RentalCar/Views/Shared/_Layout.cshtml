@@ -119,6 +119,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Pages</a>
                                 <div class="dropdown-menu m-0">
+                                    <a asp-controller="Admin" asp-action="Dashboard" class="dropdown-item">Dashboard</a>
                                     <a asp-controller="Car" asp-action="Index" class="dropdown-item">My Cars</a>
                                     <a asp-controller="Clients" asp-action="Index" class="dropdown-item">My Clients</a>
                                 </div>
@@ -129,7 +130,7 @@
                     {
                         <a asp-controller="UserAuthentication" asp-action="Login" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 5px;">Log-in</a>
                     }else{
-                        <a asp-controller="Home" asp-action="Index" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 5px;">Log-out</a>
+                        <a asp-controller="UserAuthentication" asp-action="Logout" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 5px;">Log-out</a>
                     }
                     <a asp-controller="Profile" asp-action="Index" class="navbar-brand p-0">
                         <img src="~/img/DefaultProfile.png" alt="Logo Profile Image" class="profile-icon">
