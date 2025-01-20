@@ -57,8 +57,11 @@ namespace RentalCar.Controllers
         public async Task<IActionResult> Logout()
         {
             await this._authService.LogoutAsync();
-            return RedirectToAction(nameof(Login));
+            //return RedirectToAction(nameof(Login));
+            return RedirectToAction("Index", "Home");
         }
+
+
         [AllowAnonymous]
         public async Task<IActionResult> RegisterAdmin()
         {

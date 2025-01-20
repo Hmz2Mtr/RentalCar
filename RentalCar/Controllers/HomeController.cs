@@ -1,10 +1,12 @@
 ﻿using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RentalCar.Models;
 using System.Diagnostics;
 
 namespace RentalCar.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -13,7 +15,7 @@ namespace RentalCar.Controllers
         {
             _logger = logger;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();

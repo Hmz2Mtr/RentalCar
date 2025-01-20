@@ -66,24 +66,24 @@
 
     <style>
         .profile-icon {
-            width: 50px; /* Adjust the size as needed */
-            height: 50px; /* Adjust the size as needed */
-            border-radius: 50%; /* Make it circular */
-            border: 1px solid #fff; /* Optional: Add a border */
-            object-fit: cover; /* Ensure the image fits within the circle */
+        width: 50px; /* Adjust the size as needed */
+        height: 50px; /* Adjust the size as needed */
+        border-radius: 50%; /* Make it circular */
+        border: 1px solid #fff; /* Optional: Add a border */
+        object-fit: cover; /* Ensure the image fits within the circle */
         }
 
         .navbar-brand {
-            padding: 0 !important; /* Remove default padding */
+        padding: 0 !important; /* Remove default padding */
         }
 
         .profile-icon:hover {
-            opacity: 0.8; /* Slightly fade the icon on hover */
-            border-color: #ff3434; /* Change border color on hover */
+        opacity: 1.0; /* Slightly fade the icon on hover */
+        border-color: #ff3434; /* Change border color on hover */
         }
     </style>
 
-    
+
     <!-- Navbar & Hero Start -->
     <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
         <div class="container">
@@ -101,7 +101,7 @@
                         <a asp-controller="Home" asp-action="Services" class="nav-item nav-link">Services</a>
                         <a asp-controller="Home" asp-action="Cars" class="nav-item nav-link">Our Cars</a>
                         <a asp-controller="Home" asp-action="About" class="nav-item nav-link">About</a>
-                        
+
 
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -125,7 +125,12 @@
                             </div>
                         }
                     </div>
-                    <a asp-controller="UserAuthentication" asp-action="Login" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 5px;">Get Started</a>
+                    @if (!User.IsInRole("admin") && !User.IsInRole("user"))
+                    {
+                        <a asp-controller="UserAuthentication" asp-action="Login" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 5px;">Log-in</a>
+                    }else{
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right: 5px;">Log-out</a>
+                    }
                     <a asp-controller="Profile" asp-action="Index" class="navbar-brand p-0">
                         <img src="~/img/DefaultProfile.png" alt="Logo Profile Image" class="profile-icon">
                     </a>
