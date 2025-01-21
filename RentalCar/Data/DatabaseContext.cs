@@ -11,7 +11,9 @@ namespace RentalCar.Data
         {
 
         }
+        
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
 
 
     }
