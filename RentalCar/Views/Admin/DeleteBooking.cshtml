@@ -1,11 +1,19 @@
 ﻿@model RentalCar.Models.Booking
 
 @{
-    ViewData["Title"] = "Delete Booking";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Delete All Bookings";
 }
 
-<div class="container mt-5">
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">- Delete Bookings -</h4>
+    </div>
+</div>
+<!-- Header End -->
+
+<br />
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow">
@@ -19,20 +27,20 @@
                         <dd class="col-sm-8">@Model.BookingID</dd>
                         <dt class="col-sm-4">User</dt>
                         <dd class="col-sm-8">@Model.UserName</dd>
-                        <dt class="col-sm-4">Car</dt>
-                        @* <dd class="col-sm-8">@Model.Car.Marque @Model.Car.Model</dd> *@
                         <dt class="col-sm-4">Car Image</dt>
                         <dd class="col-sm-8"><img src="@Model.CarImage" alt="Car Image" style="width: 100px; height: auto;" /></dd>
-                        <dt class="col-sm-4">Booking Date</dt>
-                        <dd class="col-sm-8">@Model.BookingDate.ToShortDateString()</dd>
-                        <dt class="col-sm-4">Total Price</dt>
+                        <dt class="col-sm-4">Booking Start Date</dt>
+                        <dd class="col-sm-8">@Model.StartDate.ToShortDateString()</dd>
+                        <dt class="col-sm-4">Booking End Date</dt>
+                        <dd class="col-sm-8">@Model.EndDate.ToShortDateString()</dd>
+                        <dt class="col-sm-4">Price per day</dt>
                         <dd class="col-sm-8">@Model.TotalPrice.ToString("C")</dd>
                     </dl>
-                    <form asp-action="Delete" method="post">
+                    <form asp-controller="Admin" asp-action="DeleteBooking" asp-route-id="@Model.BookingID" method="post">
                         <input type="hidden" asp-for="BookingID" />
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-danger">Delete</button>
-                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                            <a asp-controller="Admin" asp-action="AllBookedCars" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -40,3 +48,5 @@
         </div>
     </div>
 </div>
+<br />
+<br />
