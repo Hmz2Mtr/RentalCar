@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RentalCar.Models.Domain;
 using RentalCar.Models;
+using Microsoft.EntityFrameworkCore;
+using RentalCar.Data;
 
 namespace RentalCar.Controllers
 {
@@ -10,10 +12,12 @@ namespace RentalCar.Controllers
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly DatabaseContext _context;
 
-        public ProfileController(UserManager<ApplicationUser> userManager)
+        public ProfileController(UserManager<ApplicationUser> userManager, DatabaseContext context)
         {
             _userManager = userManager;
+            _context = context;
         }
 
         // GET: /Profile/Index
@@ -105,6 +109,63 @@ namespace RentalCar.Controllers
             // If the model is invalid, return to the edit view with errors
             return View(model);
         }
+
+
+
+
+
+
+
+
+        // GET: /Booking/Index
+        public async Task<IActionResult> MyBookedCars()
+        {
+            var bookings = await _context.Bookings
+                .ToListAsync();
+
+            return View(bookings);
+        }
+
+
+
+
+
+        // GET: /Booking/Delete/{id}
+        public async Task<IActionResult> DeleteBooking(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var booking = await _context.Bookings
+                .FirstOrDefaultAsync(b => b.BookingID == id);
+
+            if (booking == null)
+            {
+                return NotFound();
+            }
+
+            return View(booking);
+        }
+
+        // POST: /Booking/Delete/{id}
+        [HttpPost, ActionName("DeleteBooking")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            var booking = await _context.Bookings.FindAsync(id);
+            if (booking == null)
+            {
+                return NotFound();
+            }
+
+            _context.Bookings.Remove(booking);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("MyBookedCars", "Profile");
+        }
+
+
     }
 }
 
