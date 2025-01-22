@@ -1,0 +1,65 @@
+﻿@model IEnumerable<RentalCar.Models.Booking>
+
+@{
+    ViewData["Title"] = "Booked Cars";
+}
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">- Remaining Bookings -</h4>
+    </div>
+</div>
+<!-- Header End -->
+
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                List of All Remaining Bookings
+            </h2>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>User Name</th>
+                <th>Car Image</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Total Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+
+                <tr>
+                    <td>@booking.BookingID</td>
+                    <td>@booking.UserName</td>
+                    <td>
+                        <img src="@booking.CarImage" style="width: 100px; height: auto;" />
+                    </td>
+                    <td>@booking.StartDate.ToShortDateString()</td>
+                    <td>@booking.EndDate.ToShortDateString()</td>
+                    @{
+                        var totalDays = @booking.EndDate.Day - @booking.StartDate.Day + 1;
+                        var totalPrice = @booking.TotalPrice * totalDays;
+                    }
+
+                    <td>@totalPrice.ToString("C")</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Admin" asp-action="DeleteRemainingBooking" asp-route-id="@booking.BookingID" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
