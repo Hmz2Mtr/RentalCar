@@ -42,6 +42,8 @@ namespace RentalCar.Controllers
                 PhoneNumber = user.PhoneNumber
             };
 
+            
+
             return View(model);
         }
 
@@ -127,9 +129,13 @@ namespace RentalCar.Controllers
                 return NotFound();
             }
 
+            // Get the current date as DateOnly
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+
             // Filter bookings by the current user's ID
             var bookings = await _context.Bookings
                 .Where(b => b.UserID == user.Id) // Filter by UserID
+                .Where(b => b.EndDate >= currentDate)
                 .ToListAsync();
 
             return View(bookings);
