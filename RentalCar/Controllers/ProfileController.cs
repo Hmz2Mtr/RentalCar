@@ -120,7 +120,16 @@ namespace RentalCar.Controllers
         // GET: /Booking/Index
         public async Task<IActionResult> MyBookedCars()
         {
+            // Get the currently logged-in user
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Filter bookings by the current user's ID
             var bookings = await _context.Bookings
+                .Where(b => b.UserID == user.Id) // Filter by UserID
                 .ToListAsync();
 
             return View(bookings);
