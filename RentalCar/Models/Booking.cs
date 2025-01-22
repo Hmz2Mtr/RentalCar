@@ -22,9 +22,19 @@ namespace RentalCar.Models
         [Required]
         public string CarImage { get; set; } // Store the car image URL
 
+        //[Required]
+        //[DataType(DataType.Date)]
+        //public DateTime BookingDate { get; set; } // Single booking date
+
         [Required]
+        [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
-        public DateTime BookingDate { get; set; } // Single booking date
+        public DateOnly StartDate { get; set; }
+
+        [Required]
+        [Display(Name = "End Date")]
+        [DataType(DataType.Date)]
+        public DateOnly EndDate { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(10, 2)")]

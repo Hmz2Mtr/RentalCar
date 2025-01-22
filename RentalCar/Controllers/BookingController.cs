@@ -102,6 +102,9 @@ namespace RentalCar.Controllers
 
             if (ModelState.IsValid)
             {
+               
+
+                // Get the current user
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 if (user == null)
                 {
@@ -113,6 +116,19 @@ namespace RentalCar.Controllers
                 if (car == null)
                 {
                     return NotFound();
+                }
+
+                // Check if the car is already booked for the selected dates
+                var isCarBooked = await _context.Bookings
+                    .AnyAsync(b => b.CarID == booking.CarID &&
+                                   !(booking.EndDate < b.StartDate || booking.StartDate > b.EndDate));
+
+                if (isCarBooked)
+                {
+                    TempData["ErrorMessage"] = "The car is already booked for the selected dates.";
+                    ViewBag.Car = car;
+                    ViewBag.User = user;
+                    return View();
                 }
 
                 try

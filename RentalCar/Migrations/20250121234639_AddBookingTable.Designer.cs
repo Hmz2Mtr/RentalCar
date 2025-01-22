@@ -12,7 +12,7 @@ using RentalCar.Data;
 namespace RentalCar.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250121164216_AddBookingTable")]
+    [Migration("20250121234639_AddBookingTable")]
     partial class AddBookingTable
     {
         /// <inheritdoc />
@@ -166,15 +166,18 @@ namespace RentalCar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingID"));
 
-                    b.Property<DateTime>("BookingDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("CarID")
                         .HasColumnType("int");
 
                     b.Property<string>("CarImage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(10, 2)");
