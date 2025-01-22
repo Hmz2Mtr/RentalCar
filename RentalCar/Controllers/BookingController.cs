@@ -118,6 +118,18 @@ namespace RentalCar.Controllers
                     return NotFound();
                 }
 
+
+
+                // Validate that StartDate is not later than EndDate
+                if (booking.StartDate > booking.EndDate)
+                {
+                    TempData["ErrorMessage"] = "The start date cannot be later than the end date.";
+                    ViewBag.Car = car;
+                    ViewBag.User = user;
+                    return View();
+                }
+
+
                 // Check if the car is already booked for the selected dates
                 var isCarBooked = await _context.Bookings
                     .AnyAsync(b => b.CarID == booking.CarID &&
@@ -130,6 +142,7 @@ namespace RentalCar.Controllers
                     ViewBag.User = user;
                     return View();
                 }
+
 
                 try
                 {
