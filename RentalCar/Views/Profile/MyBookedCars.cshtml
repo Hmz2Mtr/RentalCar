@@ -41,7 +41,12 @@
                         </td>
                         <td>@booking.StartDate.ToShortDateString()</td>
                         <td>@booking.EndDate.ToShortDateString()</td>
-                        <td>@booking.TotalPrice.ToString("C")</td>
+                        @{
+                            var totalDays = @booking.EndDate.Day - @booking.StartDate.Day + 1;
+                            var totalPrice = @booking.TotalPrice * totalDays;
+                        }
+
+                        <td>@totalPrice.ToString("C")</td>
                         <td>
                             <div class="w-75 btn-group" role="group">
                                 <a asp-controller="Profile" asp-action="DeleteBooking" asp-route-id="@booking.BookingID" class="btn btn-danger mx-2">

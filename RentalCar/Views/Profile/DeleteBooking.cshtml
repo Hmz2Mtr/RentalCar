@@ -28,7 +28,11 @@
                             <dt class="col-sm-4">Booking End Date</dt>
                             <dd class="col-sm-8">@Model.EndDate.ToShortDateString()</dd>
                             <dt class="col-sm-4">Total Price</dt>
-                            <dd class="col-sm-8">@Model.TotalPrice.ToString("C")</dd>
+                            @{
+                                var totalDays = @Model.EndDate.Day - @Model.StartDate.Day + 1;
+                                var totalPrice = @Model.TotalPrice * totalDays;
+                            }
+                            <dd class="col-sm-8">@totalPrice.ToString("C")</dd>
                         </dl>
                         <form asp-controller="Profile" asp-action="DeleteBooking" asp-route-id="@Model.BookingID" method="post">
                             <input type="hidden" asp-for="BookingID" />
