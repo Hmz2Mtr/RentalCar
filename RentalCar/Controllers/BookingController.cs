@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentalCar.Data;
 using RentalCar.Models;
 using RentalCar.Models.Domain;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace RentalCar.Controllers
@@ -142,6 +144,22 @@ namespace RentalCar.Controllers
                     ViewBag.User = user;
                     return View();
                 }
+
+                // Get the current date
+                DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+                DateOnly userDate = booking.EndDate;
+
+                // Check if the booking date is in the past
+                if (userDate < currentDate)
+                {
+                    TempData["ErrorMessage"] = "The booking date cannot be later than today.";
+                    ViewBag.Car = car;
+                    ViewBag.User = user;
+                    return View();
+                }
+
+
+
 
 
                 try
