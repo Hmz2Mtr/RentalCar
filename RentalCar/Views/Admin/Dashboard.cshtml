@@ -1,1 +1,395 @@
-﻿Dashbord
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Use your existing layout
+}
+
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">- Dashboard -</h4>
+    </div>
+</div>
+<br />
+<!-- Header End -->
+
+
+
+<!-- Custom CSS for Unified White Rounded Panel -->
+<style>
+    .dashboard-panel {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        margin: 20px;
+    }
+
+    .panel-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .panel-body {
+        color: #555;
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #e3e6f0;
+        font-weight: bold;
+        color: #333;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        background-color: #ffffff;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .table {
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .table th {
+            background-color: #f8f9fc;
+            color: #333;
+        }
+
+        .table td {
+            color: #555;
+        }
+
+    .btn {
+        border-radius: 5px;
+    }
+
+    .chart-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="dashboard-panel">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+    </div>
+
+    <!-- Quick Stats Cards -->
+    <div class="row">
+        <!-- Total Cars Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Cars</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalCars</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-car fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Clients Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Clients</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalClients</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Bookings Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Bookings</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalBookings</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Revenue Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Revenue</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@ViewBag.TotalRevenue</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <!-- Quick Links -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    Quick Actions
+                </div>
+                <div class="card-body">
+                    <a asp-controller="Car" asp-action="Index" class="btn btn-primary btn-block mb-3">Manage Cars</a>
+                    <a asp-controller="Clients" asp-action="Index" class="btn btn-success btn-block mb-3">Manage Clients</a>
+                    <a asp-controller="Admin" asp-action="AllBookedCars" class="btn btn-info btn-block mb-3">View All Bookings</a>
+                    <a asp-controller="Admin" asp-action="RemainingBookedCars" class="btn btn-warning btn-block mb-3">View Remaining Bookings</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cars Revenue Chart -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    Top 5 Cars by Revenue
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="carsRevenueChart" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <!-- Additional Graphs and Tables -->
+    <div class="row">
+        <!-- Monthly Revenue Chart -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    Monthly Revenue
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="monthlyRevenueChart" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <!-- Bookings by Car Type -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    Bookings by Car Mark
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="bookingsByCarTypeChart" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Clients Table -->
+        <!-- Top Clients Table -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    Top 5 Clients by Revenue
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.TopClients != null && ViewBag.TopClients.Count > 0)
+                                {
+                                    @foreach (var client in ViewBag.TopClients)
+                                    {
+                                        <tr>
+                                            <td>@client.UserName</td>
+                                            <td>$@client.TotalRevenue</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="2" class="text-center">No data available</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <!-- Recent Bookings Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Recent Bookings
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>User</th>
+                                    <th>Car</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var booking in ViewBag.RecentBookings)
+                                {
+                                    <tr>
+                                        <td>@booking.BookingID</td>
+                                        <td>@booking.UserName</td>
+                                        <td><img src="@booking.CarImage" alt="Car Image" class="img-thumbnail" style="width: 50px; height: 30px;"></td>
+                                        <td>@booking.StartDate.ToShortDateString()</td>
+                                        <td>@booking.EndDate.ToShortDateString()</td>
+                                        <td>$@booking.TotalPrice</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Chart.js Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Cars Revenue Chart (Bar Chart)
+    var ctxCars = document.getElementById('carsRevenueChart').getContext('2d');
+    var carsRevenueChart = new Chart(ctxCars, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.CarsRevenueLabels)), // Use real marques
+            datasets: [{
+                label: 'Revenue',
+                data: @Html.Raw(Json.Serialize(ViewBag.CarsRevenueValues)), // Use real revenue data
+                backgroundColor: 'rgba(78, 115, 223, 0.5)',
+                borderColor: 'rgba(78, 115, 223, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Monthly Revenue Chart (Line Chart)
+    var ctxMonthly = document.getElementById('monthlyRevenueChart').getContext('2d');
+    var monthlyRevenueChart = new Chart(ctxMonthly, {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.MonthlyRevenueLabels)), // Use real month labels
+            datasets: [{
+                label: 'Revenue',
+                data: @Html.Raw(Json.Serialize(ViewBag.MonthlyRevenueValues)), // Use real revenue data
+                backgroundColor: 'rgba(54, 185, 204, 0.2)',
+                borderColor: 'rgba(54, 185, 204, 1)',
+                borderWidth: 2,
+                pointRadius: 3,
+                pointBackgroundColor: 'rgba(54, 185, 204, 1)',
+                pointBorderColor: 'rgba(54, 185, 204, 1)',
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(54, 185, 204, 1)',
+                pointHoverBorderColor: 'rgba(54, 185, 204, 1)',
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Bookings by Car Marque Chart (Doughnut Chart)
+    var ctxCarMarque = document.getElementById('bookingsByCarTypeChart').getContext('2d');
+    var bookingsByCarMarqueChart = new Chart(ctxCarMarque, {
+        type: 'doughnut',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.BookingsByMarqueLabels)), // Use real marques
+            datasets: [{
+                data: @Html.Raw(Json.Serialize(ViewBag.BookingsByMarqueValues)), // Use real booking counts
+                backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b'],
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        }
+    });
+</script>
+<br />

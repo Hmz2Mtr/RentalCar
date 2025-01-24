@@ -28,33 +28,17 @@ namespace RentalCar.Controllers
 
 
 
-        // GET: /Booking/Index
-        public async Task<IActionResult> Index()
-        {
-            var bookings = await _context.Bookings
-                .Include(b => b.UserID)
-                .Include(b => b.CarID)
-                .ToListAsync();
+        //// GET: /Booking/Index
+        //public async Task<IActionResult> Index()
+        //{
+        //    var bookings = await _context.Bookings
+        //        .Include(b => b.UserID)
+        //        .Include(b => b.CarID)
+        //        .ToListAsync();
 
-            //var cars = _context.Cars;
-            return View(bookings);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //    //var cars = _context.Cars;
+        //    return View(bookings);
+        //}
 
 
         // GET: /Booking/Create
@@ -192,41 +176,41 @@ namespace RentalCar.Controllers
 
 
 
-        // GET: /Booking/Delete/{id}
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //// GET: /Booking/Delete/{id}
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var booking = await _context.Bookings
-                .Include(b => b.UserID)
-                .Include(b => b.CarID)
-                .FirstOrDefaultAsync(b => b.BookingID == id);
+        //    var booking = await _context.Bookings
+        //        .Include(b => b.UserID)
+        //        .Include(b => b.CarID)
+        //        .FirstOrDefaultAsync(b => b.BookingID == id);
 
-            if (booking == null)
-            {
-                return NotFound();
-            }
+        //    if (booking == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(booking);
-        }
+        //    return View(booking);
+        //}
 
-        // POST: /Booking/Delete/{id}
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var booking = await _context.Bookings.FindAsync(id);
-            if (booking == null)
-            {
-                return NotFound();
-            }
+        //// POST: /Booking/Delete/{id}
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var booking = await _context.Bookings.FindAsync(id);
+        //    if (booking == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Bookings.Remove(booking);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //    _context.Bookings.Remove(booking);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
     }
 }
