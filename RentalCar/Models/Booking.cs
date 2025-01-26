@@ -17,10 +17,10 @@ namespace RentalCar.Models
         //public int CarID { get; set; } // Foreign key to Car
 
         [Required]
-        public string UserName { get; set; } // Store the username
+        public required string UserName { get; set; } // Store the username
 
         [Required]
-        public string CarImage { get; set; } // Store the car image URL
+        public required string CarImage { get; set; } // Store the car image URL
 
         //[Required]
         //[DataType(DataType.Date)]
@@ -42,7 +42,7 @@ namespace RentalCar.Models
 
         // Navigation properties
         [ForeignKey("UserID")]
-        public string UserID { get; set; }
+        public required string UserID { get; set; }
 
         [ForeignKey("CarID")]
         public int CarID { get; set; }

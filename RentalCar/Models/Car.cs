@@ -10,17 +10,18 @@ namespace RentalCar.Models
 
         [Required]
         [StringLength(50)]
-        public string Marque { get; set; }
+        public required string Marque { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string Model { get; set; }
+        public required string Model { get; set; }
 
         [StringLength(20)]
-        public string Color { get; set; }
-
+        public string? Color { get; set; }
+        
+       
         [StringLength(255)]
-        public string ImageURL { get; set; }
+        public string? ImageURL { get; set; }
 
 
         [Required]

@@ -10,7 +10,6 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
-using Microsoft.AspNetCore.Mvc;
 using System.IO;
 
 namespace RentalCar.Controllers
@@ -250,8 +249,8 @@ namespace RentalCar.Controllers
     public class SystemAlert
     {
         public int AlertID { get; set; }
-        public string Message { get; set; }
-        public string Severity { get; set; }
+        public string? Message { get; set; }
+        public string? Severity { get; set; }
         public DateTime Timestamp { get; set; }
     }
 

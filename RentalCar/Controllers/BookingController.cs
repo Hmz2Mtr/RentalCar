@@ -153,7 +153,7 @@ namespace RentalCar.Controllers
                     //return RedirectToAction(nameof(Index));
                     return RedirectToAction("Cars", "Home");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Log the error (e.g., using a logging framework)
                     ModelState.AddModelError("", "An error occurred while saving the booking.");

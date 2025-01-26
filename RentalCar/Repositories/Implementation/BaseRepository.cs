@@ -20,7 +20,7 @@ namespace RentalCar.Repositories.Implementation
                 ctx.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -34,7 +34,7 @@ namespace RentalCar.Repositories.Implementation
                 ctx.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -47,7 +47,7 @@ namespace RentalCar.Repositories.Implementation
                 ctx.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
