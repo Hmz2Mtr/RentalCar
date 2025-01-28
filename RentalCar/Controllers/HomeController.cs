@@ -1,19 +1,24 @@
 ﻿using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RentalCar.Data;
 using RentalCar.Models;
 using System.Diagnostics;
 
 namespace RentalCar.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public readonly DatabaseContext _db;
+        
+        public HomeController(ILogger<HomeController> logger, DatabaseContext db)
         {
             _logger = logger;
+            _db = db;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
@@ -23,9 +28,14 @@ namespace RentalCar.Controllers
         {
             return View();
         }
+
+
+
+
         public IActionResult Cars()
         {
-            return View();
+            var ListeCarObjet = _db.Cars.ToList();
+            return View(ListeCarObjet);
         }
         public IActionResult Notfound()
         {

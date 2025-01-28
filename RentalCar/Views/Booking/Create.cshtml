@@ -1,0 +1,90 @@
+﻿@model RentalCar.Models.Booking
+
+@{
+    ViewData["Title"] = "Create Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var car = ViewBag.Car as RentalCar.Models.Car;
+    var user = ViewBag.User as RentalCar.Models.Domain.ApplicationUser;
+}
+
+<!-- Carousel Start -->
+<div class="header-carousel">
+
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img src="~/img/carousel-2.jpg" class="img-fluid w-100" alt="First slide" />
+                <div class="carousel-caption">
+                    <div class="container py-4">
+                        <div class="row g-5">
+                           
+                            <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
+                                <div class="bg-secondary rounded p-5">
+                                    @if (TempData.ContainsKey("ErrorMessage"))
+                                    {
+                                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                                    }
+                                    <h4 class="text-white text-center mb-4 font-weight-bold">CONTINUE YOUR RESERVATION</h4>
+                                    <form asp-controller="Booking" asp-action="Create" method="post" class="needs-validation">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" asp-for="CarID" value="@car.CarID" />
+                                        <input type="hidden" asp-for="UserName" value="@user.UserName" />
+                                        <input type="hidden" asp-for="TotalPrice" value=@car.Price />
+                                        <input type="hidden" asp-for="UserID" value="@user.Id" />
+                                        <input type="hidden" asp-for="CarImage" value="@car.ImageURL" />
+
+                                        <!-- Display Car Information -->
+                                        <div class="mb-4 text-center">
+                                            <h4 class="text-white mb-3">@car.Marque @car.Model</h4>
+                                            <img src="@car.ImageURL" alt="Car Image" class="img-fluid rounded-lg mb-3" style="max-height: 200px; width: auto;" />
+                                            <p class="text-white"><strong>Price per day:</strong> <span class="text-warning">@car.Price.ToString("C")</span></p>
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- Start Date -->
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-4">
+                                                    <label asp-for="StartDate" class="form-label text-white">Start Date</label>
+                                                    <input asp-for="StartDate" type="date" class="form-control form-control-sm" required />
+                                                    <span asp-validation-for="StartDate" class="text-danger small"></span>
+                                                </div>
+                                            </div>
+
+                                            <!-- End Date -->
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-4">
+                                                    <label asp-for="EndDate" class="form-label text-white">End Date</label>
+                                                    <input asp-for="EndDate" type="date" class="form-control form-control-sm" required />
+                                                    <span asp-validation-for="EndDate" class="text-danger small"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+
+                                        <!-- Submit Button -->
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg w-100 py-2 font-weight-bold">Book Now</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-flex fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;">
+                                <div class="text-start">
+                                    <h1 class="display-5 text-white">Get 15% off your rental Plan your trip now</h1>
+                                    <p>Treat yourself in USA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->

@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using RentalCar.Data;
 using RentalCar.Models.Domain;
 using RentalCar.Repositories.Abstract;
 using RentalCar.Repositories.Implementation;
@@ -39,6 +42,9 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=UserAuthentication}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}");
+//pattern: "{controller=Home}/{action=Index}");
+//pattern: "{controller=UserAuthentication}/{action=Login}/{id?}");
+
 
 app.Run();

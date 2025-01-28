@@ -2,85 +2,125 @@
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>login</title>
-        
-<style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RentalCar</title>
+    <!-- Add Bootstrap CSS for better styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure the body covers the full viewport */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
 
-form {
-  border: 3px solid #f1f1f1;
-  width:60%;
-  margin:auto;
-  margin-top:10%;
-}
+        body {
+            background: rgba(255, 231, 224, 0.9);
+            background-size: cover; /* Cover the entire page */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repeating */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+        .login-container {
+            background: rgba(249, 242, 241, 0.9); /* Semi-transparent white background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
 
-button {
-  background-color: #aa048b;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
 
-.container {
-  padding: 16px;
-}
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 1rem;
+        }
 
-.msg{
-  padding: 0px;
-}
+        .btn-primary {
+            background-color: #e45831;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            color: white;
+        }
 
+        .btn-primary:hover {
+            background-color: #f77336;
+        }
 
-.err{
-    color:red;
-}
-</style>
- 
+        .text-danger {
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 1rem;
+            display: block;
+            color: #f77336;
+            text-decoration: none;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+
+        .alert {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-	
-<form asp-action="Login" method="post">
-  
-  <div class="container">
-    <label asp-for="Username"><b>Username</b></label>
-    <input type="text" asp-for="Username" placeholder="Enter Username">
-            <div class="msg">
-            <span class="err" asp-validation-for="Username"></span>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form asp-action="Login" method="post">
+            <!-- Username Field -->
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label"><b>Username</b></label>
+                <input type="text" asp-for="Username" class="form-control" placeholder="Enter Username">
+                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
 
-            
-
-    <label asp-for="Password"><b>Password</b></label>
-   <input  type="password" asp-for="Password" placeholder="Enter Password">
-            <div class="msg">
-            <span asp-validation-for="Password" class="err"></span>
+            <!-- Password Field -->
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"><b>Password</b></label>
+                <input type="password" asp-for="Password" class="form-control" placeholder="Enter Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
+            <!-- Display TempData message if any -->
+            @if (TempData["msg"] != null)
+            {
+                <div class="alert alert-warning">@TempData["msg"]</div>
+            }
 
-    @if(TempData["msg"]!=null){
-                <div class="msg">@TempData["msg"]</div>
-    }
+            <!-- Login Button -->
+            <button type="submit" class="btn btn-primary">Login</button>
 
-    <button type="submit">Login</button>
-    <a class="text-alert" href="/UserAuthentication/Registration">Not a user? Signup</a>
-  </div>
-</form>
+            <!-- Signup Link -->
+            <a class="signup-link" href="/UserAuthentication/Registration">Not signed up? Sign up here</a>
+        </form>
+    </div>
 
+    <!-- Add Bootstrap JS for better interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

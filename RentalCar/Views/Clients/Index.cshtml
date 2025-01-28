@@ -1,0 +1,72 @@
+﻿@using RentalCar.Models
+@model List<UserWithRolesViewModel>
+
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">- Users -</h4>
+    </div>
+</div>
+<!-- Header End -->
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Liste of Users
+            </h2>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    UserName
+                </th>
+                <th>
+                    FirstName
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Roles
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                if (@obj.Id != "e45336de-5623-4adf-a4d5-cdb5d4288559")
+                {
+                    <tr>
+                        <td>@obj.Id</td>
+                        <td>@obj.UserName</td>
+                        <td>@obj.FirstName</td>
+                        <td>@obj.LastName</td>
+                        <td>@obj.Email</td>
+                        <td>@string.Join(", ", obj.Roles)</td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Clients" asp-action="Supprimer" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash"></i> Supprimer
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+</div>

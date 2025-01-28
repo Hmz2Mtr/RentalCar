@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RentalCar.Models.Domain;
+using RentalCar.Data;
 using RentalCar.Repositories.Abstract;
 using System.Linq.Expressions;
 
@@ -20,7 +20,7 @@ namespace RentalCar.Repositories.Implementation
                 ctx.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -34,7 +34,7 @@ namespace RentalCar.Repositories.Implementation
                 ctx.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -47,7 +47,7 @@ namespace RentalCar.Repositories.Implementation
                 ctx.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
